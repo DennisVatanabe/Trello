@@ -1,0 +1,113 @@
+body {
+    background-image: url(./img/stars-1845140.jpg);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 2vw;
+    color: rgb(152, 225, 198);
+    // text-shadow: 1px 1px 1px rgba(179, 255, 254, 0.944);
+    .trello__header-wrapper {
+        margin: auto;
+        margin-top: 2vh;
+        width: 80%;
+        height: 10%;
+        background-color: rgb(246, 246, 246, 0.1);
+        border-radius: 1vh;
+        border: solid 1px rgba(255, 255, 255, 0.3);
+        .trello__header {
+            display: flex;
+            justify-content: space-between;
+            .trello__logo {
+                font-size: 5vh;
+                padding-left: 1vw;
+                width: 8vw;
+            }
+            .trello__time {
+                display: flex;
+                justify-content: end;
+                width: 9vw;
+                font-size: 4vh;
+                padding-top: 0.5vw;
+                padding-right: 1vw;
+            }
+        }
+    }
+    .trello__main-wrapper{
+        margin: 3vh auto;
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        height: 80%;
+        .trello__main-todo,
+        .trello__progress,
+        .trello__done {
+            background-color: rgb(246, 246, 246, 0.2);
+            border: solid 1px rgba(255, 255, 255, 0.3);
+            border-radius: 1vh;
+            width: 31%;
+            height: 84vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .trello__todo-header,
+            .trello__progress-header,
+            .trello__done-header{
+                display: flex;
+                justify-content: space-between;
+                border-top-left-radius: 1vh;
+                border-top-right-radius: 1vh;
+                font-size: 2.5vh;
+                p {
+                    width: 14vw;
+                    margin: 0;
+                    padding: 1vh 1vw;
+                }
+                .todo-counter,
+                .progress-counter,
+                .done-counter {
+                    padding: 1vh 1vw;
+                }
+            }
+            button {
+                background-color: rgb(246, 246, 246, 0.2);
+                border: solid 1px rgba(255, 255, 255, 0.3);
+                border-bottom-left-radius: 1vh;
+                border-bottom-right-radius: 1vh;
+                height: 5vh;
+            }
+        }
+        .trello__main-todo {
+            color: rgb(74, 171, 82);
+            background-color: rgba(96, 250, 111, 0.1);
+            border: solid 1px rgba(96, 250, 111, 0.2);
+            .trello__todo-header,
+            button {
+                background-color: rgba(96, 250, 111, 0.1);
+                border: solid 1px rgba(96, 250, 111, 0.2);
+                color: rgb(74, 171, 82);
+                font-size: 1.5vw;
+            }
+        }
+        .trello__progress {
+            color: rgb(162, 159, 159);
+            background-color: rgb(246, 246, 246, 0.1);
+            border: solid 1px rgba(255, 255, 255, 0.2);
+            .trello__progress-header {
+                background-color: rgb(246, 246, 246, 0.05);
+                border: solid 1px rgba(255, 255, 255, 0.2);
+            }
+        }
+        .trello__done {
+            color: rgb(52, 52, 234);
+            background-color: rgba(74, 64, 219, 0.1);
+            border: solid 1px rgba(80, 154, 223, 0.6);
+            .trello__done-header,
+            button {
+                background-color: rgba(74, 64, 219, 0.2);
+                border: solid 1px rgba(80, 154, 223, 0.6);
+                color: rgb(52, 52, 234);
+                font-size: 1.5vw;
+            }
+        }
+    }
+}

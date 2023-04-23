@@ -3,11 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.scss">
+    <script type="module" src="./app.js"></script>
+    <title>Trello</title>
 </head>
 <body>
+    <div class="trello__header-wrapper">
+        <div class="trello__header">
+            <div class="trello__logo">Trello</div>
+            <div class="trello__time">22:22</div>
+        </div>
+    </div>
     
+    <div class="trello__main-wrapper">
+        <!-- <div class="trello__main"> -->
+            <div class="trello__main-todo">
+                <div class="trello__todo-header">
+                    <p>TODO:</p>
+                    <div class="todo-counter">0</div>
+                </div>
+                <div class="trello__todo-wrapper"></div>
+                <button class="trello__add-todo">Add todo</button>
+            </div>
+
+            <div class="trello__progress">
+                <div class="trello__progress-header">
+                    <p>IN PROGRESS:</p>
+                    <div class="progress-counter">0</div>
+                </div>
+                <div class="trello__progress-wrapper"></div>
+            </div>
+
+            <div class="trello__done">
+                <div class="trello__done-header">
+                    <p>DONE:</p>
+                    <div class="done-counter">0</div>
+                </div>
+                <div class="trello__done-wrapper"></div>
+                <button class="trello__delete-all">Delete all</button>
+            </div>
+        <!-- </div> -->
+    </div>
 </body>
-<script type="module" src="./index.js"></script>
 </html>

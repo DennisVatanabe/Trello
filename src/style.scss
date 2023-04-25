@@ -4,8 +4,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 2vw;
-    color: rgb(152, 225, 198);
-    // text-shadow: 1px 1px 1px rgba(179, 255, 254, 0.944);
+    color: rgba(152, 225, 198, 0.667);
     .trello__header-wrapper {
         margin: auto;
         margin-top: 2vh;
@@ -56,7 +55,7 @@ body {
                 justify-content: space-between;
                 border-top-left-radius: 1vh;
                 border-top-right-radius: 1vh;
-                font-size: 2.5vh;
+                font-size: 1.5vw;
                 p {
                     width: 14vw;
                     margin: 0;
@@ -74,6 +73,14 @@ body {
                 border-bottom-left-radius: 1vh;
                 border-bottom-right-radius: 1vh;
                 height: 5vh;
+            }
+            button:hover {
+                box-shadow: 0px 0px 15px 0px;
+                transition: 0.2s;
+            }
+            button:active {
+                box-shadow: inset  0px 0px 15px 0px;
+                transition: 0.2s;
             }
         }
         .trello__main-todo {
@@ -109,5 +116,240 @@ body {
                 font-size: 1.5vw;
             }
         }
+    }
+    .wrapper__add-todo-modale {
+        display: none;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(1px);
+        margin: auto;
+        // display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .add-todo-modale {
+            width: 30%;
+            height: 30%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 2vh;
+            padding: 2vw;
+            border-radius: 0.5vw;
+            border: solid 1px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            .add-modale-todo-title {
+                height: 1.5vw;
+                text-align: center;
+                outline: none;
+                border-radius: 0.3vw;
+                font-size: 1.5vw;
+                background-color: rgb(249, 251, 240);
+            }
+            .add-modale-todo-description {
+                outline: none;
+                border-radius: 0.3vw;
+                font-size: 1.5vw;
+                background-color: rgb(249, 251, 240);
+            }
+            .add-nodale-footer {
+                display: flex;
+                justify-content: space-between;
+                .add-modale-user {
+                    width: 50%;
+                    outline: none;
+                    background-color: rgb(249, 251, 240);
+                    border-radius: 0.3vw;
+                    font-size: 1vw;
+                    // height: 30vh;
+                }
+                button {
+                    width: 20%;
+                    background-color: rgb(249, 251, 240);
+                    border-radius: 0.3vw;
+                    font-size: 1vw;
+                }
+            }
+        }
+        .edit-todo {
+            display: none;
+        }
+    }
+    .wrapper__add-todo-modale.edit {
+        .edit-todo {
+            display: flex;
+        }
+        .add-modale-confirm {
+            display: none;
+        }
+    }
+}
+#trello__todo-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+    margin: auto;
+    overflow: scroll;
+    .todo-item {
+        width: 23vw;
+        padding: 0.5vw;
+        font-size: 1.2vw;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(215, 250, 215, 0.7);
+        margin-top: 0.5vh;
+        border-radius: 0.3vw;
+        color: rgb(0, 60, 0);
+        .todo-item-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .todo-item-title {
+                width: 12vw;
+                font-weight: bold;
+            }
+            button {
+                color: rgb(0, 60, 0);
+                font-size: 1vw;
+                border: solid 1px rgba(255, 255, 255, 0.6);
+                border-radius: 0.3vw;
+                width: 5vw;
+                height: 2.5vh;
+            }
+        }
+        .todo-item-main {
+            padding-top: 1vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .todo-item-description {
+                max-width: 20vw;
+                max-height: 10vh;
+                overflow: scroll;
+            }
+            button {
+                color: rgb(0, 60, 0);
+                font-size: 1vw;
+                border: solid 1px rgba(255, 255, 255, 0.6);
+                border-radius: 0.3vw;
+                width: 2vw;
+                height: 100%;
+            }
+        }
+        .todo-item-footer {
+            padding-top: 1vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .todo-item-user {
+                font-weight: 900;
+            }
+        }
+    }
+}
+#trello__progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+    margin: auto;
+    overflow: scroll;
+    .progress-item {
+        width: 23vw;
+        padding: 0.5vw;
+        font-size: 1.2vw;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(156, 154, 153, 0.7);
+        margin-top: 0.5vh;
+        border-radius: 0.3vw;
+        color: rgb(33, 31, 31);
+        .progress-item-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .progress-item-title {
+                width: 12vw;
+            }
+            button {
+                color: rgb(69, 69, 69);
+                font-size: 1vw;
+                border: solid 1px rgba(255, 255, 255, 0.6);
+                border-radius: 0.3vw;
+                width: 5vw;
+                height: 2.5vh;
+            }
+        }
+        .progress-item-main {
+            padding-top: 1vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .progress-item-footer {
+            padding-top: 1vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+#trello__done-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+    margin: auto;
+    overflow: scroll;
+    .done-item {
+        width: 23vw;
+        padding: 0.5vw;
+        font-size: 1.2vw;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(113, 122, 240, 0.8);
+        margin-top: 0.5vh;
+        border-radius: 0.3vw;
+        color: rgb(33, 31, 31);
+        .done-item-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .done-item-title {
+                width: 12vw;
+            }
+            button {
+                color: rgb(34, 33, 33);
+                font-size: 1vw;
+                border: solid 1px rgba(255, 255, 255, 0.6);
+                border-radius: 0.3vw;
+                width: 5vw;
+                height: 2.5vh;
+            }
+        }
+        .done-item-main {
+            padding-top: 1vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .done-item-footer {
+            padding-top: 1vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+.add-modale-user {
+    option:active {
+        overflow: scroll !important;
+        max-height: 100px;
     }
 }

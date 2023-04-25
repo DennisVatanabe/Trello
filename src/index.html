@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.scss">
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="scripts/app.js"></script>
     <title>Trello</title>
 </head>
+
 <body>
     <div class="trello__header-wrapper">
         <div class="trello__header">
@@ -15,7 +16,7 @@
             <div class="trello__time">22:22</div>
         </div>
     </div>
-    
+
     <div class="trello__main-wrapper">
         <!-- <div class="trello__main"> -->
             <div class="trello__main-todo">
@@ -23,7 +24,25 @@
                     <p>TODO:</p>
                     <div class="todo-counter">0</div>
                 </div>
-                <div class="trello__todo-wrapper"></div>
+
+                <div id="trello__todo-wrapper" class="tasks-wrapper">
+                    <!-- <div class="todo-item" draggable="true">
+                        <div class="todo-item-header">
+                            <div class="todo-item-title">Title</div>
+                            <button class="todo-item-edit">Edit</button>
+                            <button class="todo-item-delete">Delete</button>
+                        </div>
+                        <div class="todo-item-main">
+                            <div class="todo-item-description">Description</div>
+                            <button class="todo-item-progress">></button>
+                        </div>
+                        <div class="todo-item-footer">
+                            <div class="todo-item-user">User</div>
+                            <div class="todo-item-date">24.04.2023</div>
+                        </div>
+                    </div> -->
+                </div>
+
                 <button class="trello__add-todo">Add todo</button>
             </div>
 
@@ -32,7 +51,25 @@
                     <p>IN PROGRESS:</p>
                     <div class="progress-counter">0</div>
                 </div>
-                <div class="trello__progress-wrapper"></div>
+
+                <div id="trello__progress-wrapper" class="tasks-wrapper">
+                    <div class="progress-item" draggable="true">
+                        <div class="progress-item-header">
+                            <div class="progress-item-title">Title</div>
+                            <button class="progress-item-back">Back</button>
+                            <button class="progress-item-complete">Complete</button>
+                        </div>
+                        <div class="progress-item-main">
+                            <div class="progress-item-description">Description</div>
+                            <!-- <button class="progress-item-progress">></button> -->
+                        </div>
+                        <div class="progress-item-footer">
+                            <div class="progress-item-user">User</div>
+                            <div class="progress-item-date">24.04.2023</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="trello__done">
@@ -40,10 +77,43 @@
                     <p>DONE:</p>
                     <div class="done-counter">0</div>
                 </div>
-                <div class="trello__done-wrapper"></div>
+
+                <div id="trello__done-wrapper" class="tasks-wrapper">
+                    <div class="done-item" draggable="true">
+                        <div class="done-item-header">
+                            <div class="done-item-title">Title</div>
+                            <!-- <button class="done-item-edit">Edit</button> -->
+                            <button class="done-item-delete">Delete</button>
+                        </div>
+                        <div class="done-item-main">
+                            <div class="done-item-description">Description</div>
+                            <!-- <button class="done-item-progress">></button> -->
+                        </div>
+                        <div class="done-item-footer">
+                            <div class="done-item-user">User</div>
+                            <div class="done-item-date">24.04.2023</div>
+                        </div>
+                    </div>
+                </div>
+
                 <button class="trello__delete-all">Delete all</button>
             </div>
         <!-- </div> -->
+    </div>
+
+    <div class="wrapper__add-todo-modale">
+        <div class="add-todo-modale">
+            <input type="text" class="add-modale-todo-title" placeholder="Title"></input>
+            <textarea rows="5" cols="20" class="add-modale-todo-description" placeholder="Description"></textarea>
+            <div class="add-nodale-footer">
+                <select type="select" class="add-modale-user">
+                    <option value="Select a user" selected disabled>Select a user</option>
+                </select>
+                <button class="add-modale-cancel">Cancel</button>
+                <button class="add-modale-confirm">Confirm</button>
+                <button class="edit-todo">Edit</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

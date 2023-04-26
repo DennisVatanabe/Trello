@@ -8,7 +8,9 @@ import {
     // Task,
     selectHadleChoices,
     createTodo,
-    confirmEditItem
+    confirmEditItem,
+    selectInProgressFunction,
+    selectInDoneFunction
 } from './functions.js';
 
 const elementTime = document.querySelector('.trello__time');
@@ -23,7 +25,14 @@ const elementInputTitle = document.querySelector('.add-modale-todo-title');
 const elementInputDescription = document.querySelector('.add-modale-todo-description');
 const elementsSelectedUsers = document.querySelectorAll('.user');
 const elementButtonEditTodo = document.querySelector('.edit-todo');
+const elementProgressWrapper = document.querySelector('#trello__progress-wrapper');
+const elementDoneWrapper = document.querySelector('#trello__done-wrapper');
+const elementTodoCounter = document.querySelector('.todo-counter');
+const elementProgressCounter = document.querySelector('.progress-counter');
+const elementDoneCounter = document.querySelector('.done-counter');
 
+elementDoneWrapper.addEventListener('click', selectInDoneFunction);
+elementProgressWrapper.addEventListener('click', selectInProgressFunction);
 elementButtonEditTodo.addEventListener('click', confirmEditItem);
 elementTodosWrapper.addEventListener('click', selectHadleChoices);
 // elementsSelectedUsers.addEventListener('click', function(){console.log(91)})
@@ -44,5 +53,9 @@ export {elementTime,
     elementInputTitle,
     elementInputDescription,
     elementsSelectedUsers,
-    elementButtonEditTodo
+    elementButtonEditTodo,
+    elementDoneWrapper,
+    elementTodoCounter,
+    elementProgressCounter,
+    elementDoneCounter
 };

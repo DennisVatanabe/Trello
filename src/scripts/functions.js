@@ -1,29 +1,26 @@
 import {elementTime,
-    elementHandleAddTodo,
     elementAddTodoModale,
-    elementTodosWrapper,
-    elementHandleCancelAddTodo,
     elementSelectUser,
     elementsAllTasksWrappers,
-    elementHandleConfirmAddTodo,
     elementInputTitle,
     elementInputDescription,
-    elementsSelectedUsers
+    elementTodoCounter,
+    elementProgressCounter,
+    elementDoneCounter
 } from './elements.js';
 
 import { getItems, setItems } from './storage.js';
 
-import { buildCardTemplate } from './templates.js';
+import { buildCardProgressTemplate, buildCardTemplate, buildCardDoneTemplate } from './templates.js';
 
 function createTodo() {
     const title = elementInputTitle.value;
     const description = elementInputDescription.value;
     const user = elementSelectUser.value;
     const id = elementAddTodoModale.id || Date.now();
-    // const category = newTodoCategoryElement.value
-    // const task = new Task({ title, description, user, category })
+    const category = 'todo';
     if (title && description && (elementSelectUser.options[elementSelectUser.selectedIndex].classList.contains('user'))) {
-        const task = new Task({ title, description, user, id});
+        const task = new Task({ title, description, user, id, category});
         const items = getItems('tasks');
         items.push(task);
         setItems('tasks', items);
@@ -41,25 +38,46 @@ function clearContainers() {
 function render() {
     const tasks = getItems('tasks');
 
+    const todos = tasks.filter((el) => {
+        if (el.category === 'todo') {
+            return el;
+        };
+    });
+
+    const progress = tasks.filter((el) => {
+        if (el.category === 'progress') {
+            return el;
+        };
+    });
+
+    const done = tasks.filter((el) => {
+        if (el.category === 'done') {
+            return el;
+        };
+    });
+
     clearContainers();
-    if (tasks.length) {
-        tasks.forEach((element) => {
-        buildCardTemplate(element)
+    if (todos.length) {
+        todos.forEach((element) => {
+            buildCardTemplate(element);
         });
     };
+
+    if (progress.length) {
+        progress.forEach((element) => {
+            buildCardProgressTemplate(element)
+        });
+    };
+
+    if (done.length) {
+        done.forEach((element) =>{
+            buildCardDoneTemplate(element);
+        })
+    };
+    counter();
 };
 
-function selectHadleChoices({target}) {
-const item = +target.parentElement.parentElement.id;
-    if (target.classList.contains('todo-item-progress')) {
-        console.log('to-progress');
-    } else if (target.classList.contains('todo-item-edit')) {
-        callEditItem(item);
-    } else if (target.classList.contains('todo-item-delete')) {
-        removeItem(target);
-    }
-    // console.log(item);
-};
+
 
 function callEditItem (id) {
     const items = getItems('tasks');
@@ -167,6 +185,77 @@ async function selectUser() {
     });
 };
 
+function selectHadleChoices({target}) {
+    const item = +target.parentElement.parentElement.id;
+    if (target.classList.contains('todo-item-progress')) {
+        todoToProgress(target);
+    } else if (target.classList.contains('todo-item-edit')) {
+        callEditItem(item);
+    } else if (target.classList.contains('todo-item-delete')) {
+        removeItem(target);
+    };
+};
+
+function todoToProgress(event) {
+    const items = getItems('tasks');
+    const searchId = +event.parentElement.parentElement.id
+    items.forEach((el) => {
+        if (el.id === searchId) {
+            el.category = 'progress';
+        };
+    });
+    setItems('tasks', items);
+    render();
+};
+
+function progressToDone(event) {
+    const items = getItems('tasks');
+    const searchId = +event.parentElement.parentElement.id
+    items.forEach((el) => {
+        if (el.id === searchId) {
+            el.category = 'done';
+        };
+    });
+    setItems('tasks', items);
+    render();
+};
+
+function fromProgressToTodo(event) {
+    const items = getItems('tasks');
+    const searchId = +event.parentElement.parentElement.id
+    items.forEach((el) => {
+        if (el.id === searchId) {
+            el.category = 'todo';
+        };
+    });
+    setItems('tasks', items);
+    render();
+};
+
+function selectInProgressFunction({target}) {
+    if (target.classList.contains('progress-item-back')) {
+        fromProgressToTodo(target);
+    } else if (target.classList.contains('progress-item-complete')){
+        progressToDone(target);
+    } else console.log('missed');
+};
+
+function selectInDoneFunction({target}) {
+    removeItem(target);
+};
+
+function counter() {
+    const tasks = getItems('tasks');
+    const todoTasks = tasks.filter(task => task.category === 'todo');
+    const progressTasks = tasks.filter(task => task.category === 'progress');
+    const doneTasks = tasks.filter(task => task.category === 'done');
+
+    elementTodoCounter.innerHTML = todoTasks.length;
+    elementProgressCounter.innerHTML = progressTasks.length;
+    elementDoneCounter.innerHTML = doneTasks.length;
+};
+
+
 export {getUsers,
     selectUser,
     getItems,
@@ -178,5 +267,7 @@ export {getUsers,
     render,
     selectHadleChoices,
     confirmEditItem,
-    removeItem
+    removeItem,
+    selectInProgressFunction,
+    selectInDoneFunction
 };
